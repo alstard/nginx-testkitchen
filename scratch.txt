@@ -1,0 +1,5 @@
+1. Yum updates
+2. Install Nginx
+3. Create config
+4. Create/Copy Test file
+5. Start/Enable Nginx
