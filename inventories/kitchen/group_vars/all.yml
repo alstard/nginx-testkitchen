@@ -1,0 +1,9 @@
+---
+common_time_servers:
+  - 0.uk.pool.ntp.org
+  - 1.uk.pool.ntp.org
+  - 2.uk.pool.ntp.org
+  - 3.uk.pool.ntp.org
+
+key_file: /etc/nginx/ssl/nginx.key
+cert_file: /etc/nginx/ssl/nginx.crt

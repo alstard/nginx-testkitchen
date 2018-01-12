@@ -14,8 +14,8 @@ if [[ "$new_project" != "." ]]; then
 fi
 
 # Inventory and master playbook
-#touch production staging site.yml 
-touch site.yml
+touch production staging site.yml
+#touch site.yml
 
 # Folders
 mkdir -p group_vars host_vars library filter_plugins
@@ -24,6 +24,13 @@ mkdir -p group_vars host_vars library filter_plugins
 mkdir -p roles/common/{tasks,handlers,templates,files,vars,defaults,meta}
 touch roles/common/{tasks,handlers,templates,files,vars,defaults,meta}/main.yml
 
-# Create a default inventory file specifying localhost
-mkdir -p inventory
-echo "localhost" > ./inventory/hosts
+
+mkdir -p inventories/{production,staging,kitchen}/{group_vars,host_vars}
+#echo "localhost" > ./inventories/production/hosts
+#echo "localhost" > ./inventories/staging/hosts
+
+# KITCHEN - Create a default inventory file specifying localhost
+echo "localhost" > ./inventories/kitchen/hosts
+
+# KITCHEN - Create a variables file
+echo "---" > ./inventories/kitchen/group_vars/all.yml
