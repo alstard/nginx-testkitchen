@@ -1,0 +1,14 @@
+---
+# Common tasks (Nginx is EPEL package)
+- name: Install required packages
+  package:
+    name: "{{ item }}"
+  with_items:
+    - ntp-4.2.6p5-25.el7.centos.2.x86_64
+    - nginx-1.12.2-1.el7.x86_64
+
+# - name: Configure NTP Daemon
+
+# - name: Configure Nginx
+
+

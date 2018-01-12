@@ -43,7 +43,7 @@ suites:
       patterns:
         - spec/*_spec.rb
     provisioner:
-      playbook: mynginxsetup.yml
+      playbook: site.yml
     driver_config:
       hostname: nginxtests.local
       instance_name: nginxtests
