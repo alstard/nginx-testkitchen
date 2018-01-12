@@ -7,7 +7,15 @@
     - ntp-4.2.6p5-25.el7.centos.2.x86_64
     - nginx-1.12.2-1.el7.x86_64
 
-# - name: Configure NTP Daemon
+- name: Configure NTP Daemon
+  template:
+    src: ntp/ntp.conf.j2
+    dest: /etc/ntp.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart time daemon
 
 # - name: Configure Nginx
 

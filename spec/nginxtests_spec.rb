@@ -1,7 +1,19 @@
 require_relative 'spec_helper'
 
-describe 'nginxtests mynginxsetup.yml' do
-    describe =begin PACKAGE/FILE DESCRIPTORS =end  do
-        // DO SOME TESTS HERE 
-    end
+describe 'nginxtests site.yml' do
+    describe package('ntp') do
+        it { should be_installed }
+        end
+
+        describe file('/etc/ntp.conf') do
+        its(:content) { should match(/^server [0-9].uk.pool.ntp.org iburst$/) }
+        end
+
+        describe service('ntpd') do
+        it { should be_enabled }
+        end
+
+        describe service('ntpd') do
+        it { should be_running }
+        end
 end

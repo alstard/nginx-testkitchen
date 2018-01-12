@@ -1,6 +1,6 @@
 ---
 # Handlers for the common role
-- name: restart time server
+- name: restart time daemon
   service:
     enabled: yes
     name: ntpd
