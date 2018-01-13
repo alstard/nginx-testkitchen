@@ -1,0 +1,45 @@
+---
+# Common tasks (Nginx is EPEL package)
+- name: Install required packages
+  package:
+    name: "{{ item }}"
+  with_items:
+    - ntp-4.2.6p5-25.el7.centos.2.x86_64
+    - nginx-1.12.2-1.el7.x86_64
+
+- name: Configure NTP Daemon
+  template:
+    src: ntp/ntp.conf.j2
+    dest: /etc/ntp.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart time daemon
+
+- name: Configure Nginx (No SSL yet)
+  template:
+    src: nginx/nginx.conf.j2
+    dest: /etc/nginx/
+  notify:
+    - restart nginx
+
+  #      - name: create directories to store our self generated TLS/SSL Certs
+  #    file: path=/etc/nginx/ssl state=directory
+
+  #  - name: copy TLS key
+  #    copy: src=files/nginx.key dest={{ key_file }} owner=root mode=0600
+
+  #  - name: copy TLS cert
+  #    copy: src=files/nginx.crt dest={{ cert_file }}
+  #    notify: restart nginx
+
+  #  - name: copy nginx config file
+  #    template: src=templates/nginx.conf.j2 dest={{ conf_file }}
+
+  #  - name: enable configuration via symlink
+  #    file: dest=/etc/nginx/sites-enabled/default src={{ conf_file }} state=link
+  #    notify: restart nginx
+
+  #  - name: copy index.html file
+  #    template: src=templates/index.html.j2 dest=/usr/share/nginx/html/index.html mode=0644
