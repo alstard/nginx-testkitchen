@@ -1,2 +1,5 @@
 .*
-!.kitchen.yml
+*.swp
+.kitchen/
+Gemfile.lock
+tdd/
