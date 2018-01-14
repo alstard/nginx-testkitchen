@@ -23,3 +23,5 @@ Some tests to check:
 
 TravisCI integration
 Improve Test suite
+
+[![Build Status](https://travis-ci.org/alstard/nginx-testkitchen.svg?branch=development)](https://travis-ci.org/alstard/nginx-testkitchen)
