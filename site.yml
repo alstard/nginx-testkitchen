@@ -1,0 +1,7 @@
+---
+- name: 'Nginx Test Kitchen Playbook'
+
+  hosts: all
+
+  roles:
+    - common

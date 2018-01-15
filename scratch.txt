@@ -1,0 +1,14 @@
+1. Yum updates
+2. NTP configuration
+3. Install Nginx
+4. Create config
+5. Create/Copy Test file
+6. Start/Enable Nginx
+
+Generate SSL Certs
+
+# Generate self-signed certs for localhost (NB. Requires certs directory to exist)
+ssl: certs/nginx.crt certs/nginx.key
+
+certs/nginx.crt certs/nginx.key:
+	openssl req -new -x509 -nodes -out certs/nginx.crt -keyout certs/nginx.key -subj '/CN=localhost' -days 3650

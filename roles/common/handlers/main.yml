@@ -1,0 +1,13 @@
+---
+# Handlers for the common role
+- name: restart time daemon
+  service:
+    enabled: yes
+    name: ntpd
+    state: restarted
+
+- name: restart nginx
+  service:
+    enabled: yes
+    name: nginx
+    state: restarted
