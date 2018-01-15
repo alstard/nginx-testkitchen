@@ -2,7 +2,7 @@ require_relative 'spec_helper'
 
 describe 'nginxtests site.yml' do
   describe package('ntp') do
-      it { should be_installed }
+    it { should be_installed }
   end
 
   describe file('/etc/ntp.conf') do
