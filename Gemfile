@@ -5,6 +5,11 @@ group :development do
 end
 
 group :test do
+  gem 'app_conf',                    require: false
+  gem 'appbundler',                  require: false
+  gem 'artifactory',                 require: false
+  gem 'aws-sdk',                     require: false
+  gem 'axiom-types',                 require: false
   gem 'kitchen-ansible',             require: false
   gem 'kitchen-docker',              require: false
   gem 'kitchen-verifier-serverspec', require: false

@@ -16,8 +16,10 @@ Some tests to check:
 |------|-------------|
 |1|Check configuration of Nginx container|
 |2|Check Nginx installed and started|
-|3|Check content is being served|
-|4|Application Test(s) TBD|
+|3|Check NTP is installed and configured/started|
+|4|Check SSL/TLS configuration is enabled in Nginx|
+|5|Check content is being served by Nginx|
+|6|Application Test(s) TBD|
 
 ## TODO
 

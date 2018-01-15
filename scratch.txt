@@ -12,3 +12,6 @@ ssl: certs/nginx.crt certs/nginx.key
 
 certs/nginx.crt certs/nginx.key:
 	openssl req -new -x509 -nodes -out certs/nginx.crt -keyout certs/nginx.key -subj '/CN=localhost' -days 3650
+
+	    key_file: /etc/nginx/ssl/nginx.key
+    	cert_file: /etc/nginx/ssl/nginx.crt
