@@ -1,15 +1,23 @@
-server {
-        listen 80 default_server;
-        listen 443 ssl;
+worker_processes  1;
 
-        root /usr/share/nginx/html;
-        index index.html index.htm;
+events {
+    worker_connections  1024;
+}
 
-        server_name {{ ansible_hostname }};
-#        ssl_certificate {{ cert_file }};
-#        ssl_certificate_key {{ key_file }};
+http {
+        server {
+                listen 80 default_server;
+                listen 443 ssl;
 
-        location / {
-                try_files $uri $uri/ =404;
+                root /usr/share/nginx/html;
+                index index.html index.htm;
+
+                server_name {{ ansible_hostname }};
+                ssl_certificate {{ tls_cert_fullpath }};
+                ssl_certificate_key {{ tls_key_fullpath }};
+
+                location / {
+                        try_files $uri $uri/ =404;
+                }
         }
 }

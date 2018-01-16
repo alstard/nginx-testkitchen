@@ -1,0 +1,12 @@
+---
+# vars file for common
+
+# TLS certificate locations
+nginx_base_conf_dir: /etc/nginx
+tls_key_file: test.key
+tls_cert_file: test.crt
+certificate_directory: "{{ nginx_base_conf_dir}}/ssl"
+tls_key_fullpath: "{{ certificate_directory}}/{{ tls_key_file }}"
+tls_cert_fullpath: "{{ certificate_directory}}/{{ tls_cert_file }}"
+nginx_conf_file: "{{ nginx_base_conf_dir }}/nginx.conf"
+nginx_html: /usr/share/nginx/html

@@ -17,29 +17,47 @@
   notify:
     - restart time daemon
 
-- name: Configure Nginx (No SSL yet)
+- name: Configure Nginx with SSL enabled via slef
   template:
-    src: nginx/nginx.conf.j2
-    dest: /etc/nginx/
+    src: templates/nginx/nginx.conf.j2
+    dest: "{{ nginx_conf_file }}"
   notify:
     - restart nginx
 
-  #      - name: create directories to store our self generated TLS/SSL Certs
-  #    file: path=/etc/nginx/ssl state=directory
+- name: create directories to store our self generated TLS/SSL Certs
+  file:
+    path: "{{ certificate_directory }}"
+    state: directory
 
-  #  - name: copy TLS key
-  #    copy: src=files/nginx.key dest={{ key_file }} owner=root mode=0600
+- name: copy TLS key
+  copy:
+    src: "files/{{ tls_key_file }}"
+    dest: "{{ certificate_directory }}"
+    owner: root
+    mode: 0600
+  notify:
+    - restart nginx
 
-  #  - name: copy TLS cert
-  #    copy: src=files/nginx.crt dest={{ cert_file }}
-  #    notify: restart nginx
+- name: copy TLS cert
+  copy:
+    src: "files/{{ tls_cert_file }}"
+    dest: "{{ certificate_directory }}"
+  notify:
+    - restart nginx
 
-  #  - name: copy nginx config file
-  #    template: src=templates/nginx.conf.j2 dest={{ conf_file }}
+# - name: copy nginx config file
+#   template:
+#     src: templates/nginx.conf.j2
+#     dest: "{{ ngin_conf_file }}"
 
-  #  - name: enable configuration via symlink
-  #    file: dest=/etc/nginx/sites-enabled/default src={{ conf_file }} state=link
-  #    notify: restart nginx
+# - name: enable configuration via symlink
+#   file: dest=/etc/nginx/sites-enabled/default src={{ conf_file }} state=link
+#   notify: restart nginx
 
-  #  - name: copy index.html file
-  #    template: src=templates/index.html.j2 dest=/usr/share/nginx/html/index.html mode=0644
+- name: copy test file index.html to Nginx
+  template:
+    src: templates/nginx/index.html.j2
+    dest: "{{ nginx_html }}/index.html"
+    mode: 0644
+  notify:
+    - restart nginx
