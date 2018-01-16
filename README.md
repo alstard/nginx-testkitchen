@@ -12,18 +12,15 @@ A simple Nginx HTTP/HTTPS Server delivering static content. Any certificates wil
 
 Some tests to check:
 
-| Test | Description |
-|------|-------------|
-|1|Check configuration of Nginx container|
-|2|Check Nginx installed and started|
-|3|Check NTP is installed and configured/started|
-|4|Check SSL/TLS configuration is enabled in Nginx|
-|5|Check content is being served by Nginx|
-|6|Application Test(s) TBD|
+| Test | Description | Status |
+|------|-------------|--------|
+|1|Check configuration of Nginx container|DONE|
+|2|Check Nginx installed and started|DONE|
+|3|Check NTP is installed and configured/started|DONE|
+|4|Check SSL/TLS configuration is enabled in Nginx|DONE|
+|5|Check content is being served by Nginx|....|
+|6|Application Test(s) TBD|....|
 
-## TODO
-
-TravisCI integration
-Improve Test suite
+## TravisCI Status
 
 [![Build Status](https://travis-ci.org/alstard/nginx-testkitchen.svg?branch=development)](https://travis-ci.org/alstard/nginx-testkitchen)
