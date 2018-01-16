@@ -10,6 +10,9 @@ platforms:
       image: centos/systemd
       run_command: /usr/sbin/init
       privileged: true
+      forward:
+        - 8443:443
+        - 8080:80
       provision_command:
         - yum install -y epel-release
         - yum install -y python2-pip rsyslog initscripts
@@ -47,7 +50,3 @@ suites:
     driver_config:
       hostname: nginxtests.local
       instance_name: nginxtests
-
-forward:
-- 43:8443
-- 80:8080
